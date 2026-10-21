@@ -1,0 +1,18 @@
+// Deploy do Bueno TI no Cloudflare Workers (versão completa, com SSR).
+// O build (`npm run build`) gera:
+//   .output/server/index.mjs  -> worker (server-side rendering)
+//   .output/public            -> arquivos estáticos
+// Deploy: `npm run deploy` (ou `npx wrangler deploy` depois de `npx wrangler login`)
+{
+  "name": "buenoti",
+  "main": "./.output/server/index.mjs",
+  "compatibility_date": "2025-04-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "binding": "ASSETS",
+    "directory": "./.output/public"
+  },
+  "observability": {
+    "enabled": true
+  }
+}
